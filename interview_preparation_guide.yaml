@@ -1,0 +1,10 @@
+```yaml
+subject: Facebook Software Engineering Technical Interview Guide
+body:
+  - "Drilling down the pattern distribution data for the Facebook software engineering position, it's evident that common patterns such as Trees, Two Pointers, Stack, and Basic Programming are commonly asked. You might also encounter Dynamic Programming problems. These topics collectively comprise a significant percentage of problems asked for this role. Hence, having a deep understanding and fluency in these topics could greatly enhance your chance of success in the Facebook technical interview. Questions range from medium to hard difficulty level, so it's prudent to practice efficient coding and understand the underlying theories well."
+  | 
+  - "To prepare for the interview, practice solving leetcode problems attributed to these patterns to familiarize with commonly asked problems. For Two Pointers, we suggest this problem '[3Sum](https://leetcode.com/problems/3sum/)'. For Trees, '[Binary Tree Inorder Traversal](https://leetcode.com/problems/binary-tree-inorder-traversal/)' is a great example. 'Basic Calculator' could be an ideal example for Stack problems: [Basic Calculator](https://leetcode.com/problems/basic-calculator/). For Dynamic Programming, a commonly asked problem is '[Best Time to Buy and Sell Stock](https://leetcode.com/problems/best-time-to-buy-and-sell-stock/)'. All these problems have also been frequently asked by Facebook in the past." 
+  | 
+  - "To get the best results, follow this practice routine: Identify one pattern, understand the theory and examples, implement it across different scenarios and problem contexts, and finally practice problems on Leetcode. This will help develop a deep understanding of each pattern and an intuitive sense of when to apply them. Remember that understanding the common patterns can significantly improve your efficiency and enhance your problem-solving skills in technical interviews. Happy practicing!"
+references: ['https://leetcode.com/', 'https://leetcode.com/company/facebook/']
+```
