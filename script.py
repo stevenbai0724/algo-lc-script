@@ -1,49 +1,40 @@
 import pandas as pd
 import matplotlib.pyplot as plt
 import numpy as np
+import re
 import yaml as yaml
 import openai
 from dotenv import dotenv_values
+from unicodedata import normalize
 import os
 from openai import OpenAI
 
-company = "Facebook"
-excelfile = f"./excel sheets/{company}_questions.xlsx"
+# yaml config
+def load_config(config_path):
+    with open(config_path, 'r') as file:
+        config = yaml.safe_load(file)
+    return config
+
+def replace_placeholders(config, placeholders):
+    config_str = yaml.dump(config)
+    for key, value in placeholders.items():
+        config_str = re.sub(r'\$\{' + key + r'\}', value, config_str)
+    return yaml.safe_load(config_str)
+
+config_path = './config.yaml'  # Update this path as needed
+yaml_config = load_config(config_path)
+
+placeholders = {'company': yaml_config['company']}
+
+yaml_config = replace_placeholders(yaml_config, placeholders)
+
+company = yaml_config["company"]
+excelfile = yaml_config["directories"]["excel_file"]
+
 df = pd.read_excel(excelfile)
 
-patterns = {
-    "Dynamic Programming": 0,
-    "Depth-First Search": 0,
-    "Breadth-First Search": 0,
-    "Two Pointers": 0,
-    "Trie": 0,
-    "Tree": 0,
-    "Simulation": 0,
-    "Design": 0,
-    "Greedy": 0,
-    "Graph": 0,
-    "Bit Manipulation": 0,
-    "Math": 0,
-    "Matrix": 0,
-    "Heap": 0,
-    "Stack": 0,
-    "Backtracking": 0,
-    "Binary Search": 0,
-    "Sliding Window": 0,
-    "Basic Programming": 0,
-    "Hash Function": 0,
-    "Linked List": 0,
-    "Database": 0,
-    "Union Find": 0,
-    "Adv. Data Structure": 0,
-    "Recursion": 0,
-    "Divide and Conquer": 0,
-}   
-difficulty = {
-    "Easy": 0,
-    "Medium": 0,
-    "Hard": 0,
-}
+patterns = yaml_config["patterns"]
+difficulty = yaml_config["difficulty"]
 
 # topics that are mutually exclusive with "basic programming" pattern
 not_basics = ["Dynamic Programming", "Depth-First Search", "Breadth-First Search", "Trie", "Simulation", "Graph", "Recursion"]
@@ -73,7 +64,7 @@ def generate_charts():
             angle = np.rad2deg(np.arctan2(y, x))
             horizontalalignment = {-1: "right", 1: "left"}[int(np.sign(x))]
             connectionstyle = f"angle,angleA=0,angleB={angle}"
-            ax.annotate(text, xy=(x, y), xytext=(1.25*np.sign(x), 1.2*y),
+            ax.annotate(text, xy=(x, y), xytext=(1.2*np.sign(x), 1.2*y),
                         horizontalalignment=horizontalalignment,
                         arrowprops=dict(arrowstyle="-", connectionstyle=connectionstyle),
                         )
@@ -97,20 +88,20 @@ def generate_charts():
 
         # Title and show
         chartname = f"{company} Interview Pattern Distribution"
-        filename = f"./charts/{company}_pattern_chart.png"
+        filename = yaml_config["directories"]["pattern_chart"]
 
         plt.title(chartname, weight="bold", fontsize=18, pad=50)
         plt.savefig(filename)
 
     def plot_difficulty(difficulty):
-        colors = ['#34a853', '#fbbc02', '#eb4334']
+        colors = ['#34a853','#eb4334', '#fbbc02']
 
         fig, ax = plt.subplots(figsize=(10, 10))
         ax.pie(difficulty.values(), labels=difficulty.keys(), autopct='%1.1f%%', startangle=90, colors=colors)
         ax.axis('equal')  # Equal aspect ratio ensures that pie is drawn as a circle.
 
         chartname = f"{company} Interview Question Difficulty"
-        filename = f"./charts/{company}_difficulty_chart.png"
+        filename = yaml_config["directories"]["difficulty_chart"]
 
         plt.title(chartname, weight="bold", fontsize=18, pad=50)
         plt.savefig(filename)
@@ -119,7 +110,7 @@ def generate_charts():
     for index, row in df.iterrows():
         patterns_string = str(row.iloc[2])
         difficulty_string = str(row.iloc[4])
-        problem_id = str(row.iloc[0])
+        problem_id = int(row.iloc[0])
 
         idlist.append(problem_id)
 
@@ -155,33 +146,56 @@ def generate_charts():
 def main():
     generate_charts()
 
-    #config
+    #OpenAI config
     client = OpenAI()
     config = dotenv_values(".env")
     client.api_key = config["OPENAI_API_KEY"]
 
     new_patterns = {k: v for k, v in patterns.items() if v > 0}
+    res = ""
 
-    # roles: system, user, assistant
-    # system - sets the behavior of the assistant
-    # user - provides requests or comments for the assistant to respond to
-    # assistant - stores previous assistant responses
+    data = {
+        "title": f"{company} Interview Patterns",
+        "questions": idlist,
+        "pattern": {
+            "pattern_chart": "",
+            "difficulty_chart": "",
+            "summary": (
+                ""
+            ),
+        }
+    }
+
+    # prompt
     messages = [
-        {"role": "system", "content": "You need to write a technical interview guide for a specific company. The position is for software engineering and the problems are leetcode-style coding challenges with patterns like dfs/bfs, two pointers, dynamic programming, etc. user provdes the pattern distribution data and you need to write 1-3 paragraphs about the trends and difficulty level (briefly) and how to prepare by identifying common patterns and listing some leetcode problems. do not output the distribution data. output in yaml format ready to be exported. provide good examples of questions and hyperlink them in lists, pipe symbol to separate paragraphs."},
-        {"role": "user", "content": f"please write a technical interview guide for {company}. here is the pattern distrbution for the interview: {str(new_patterns)}. do not mention the problem frequency counts."}
+        {"role": "system", "content": "You need to write a technical interview guide for a specific company. The position is for software engineering and the problems are leetcode-style coding challenges with patterns like dfs/bfs, two pointers, dynamic programming, etc. user provdes the pattern distribution data and you need to write 1-3 paragraphs about the trends and briefly the difficulty level, and how to prepare by identifying common patterns and listing some leetcode problems. do not output the distribution data."},
+        {"role": "user", "content": f"please write a technical interview guide for {company}. here is the pattern distrbution for the interview: {str(new_patterns)}. do not mention the problem frequency counts. provide 2-3 paragraphs each separated by two newlines. provde problem list hyperlinked separated by newlines after the paragraphs. hyper links should be like this: '- [Minimum Number of Keypresses (Sorting + Greedy)](https://algo.monster/liteproblems/2268)\\n' where the link is to algo.monster/liteproblems followed by leetcode problem ID number. the returned response should just be first paragraph\\n\\nsecondparagraph\\n\\n- [list item1](https://)\\n- [list item2](https://)\\n). "}
     ]
-
     completion = client.chat.completions.create(
         model="gpt-4",
         max_tokens=2048,
         messages=messages
     )
+    res = completion.choices[0].message.content
+    res.replace(":", "")
+    res.replace('\\n', '\n')
+    res = re.sub(r'[ \t]+\n', '\n', res)
+    
+    data["pattern"]["summary"] = res
 
-    print(completion.choices[0].message.content)
+    # Custom representer to format the output into desired yaml
+    def str_presenter(dumper, data):
+        if '\n' in data:
+            return dumper.represent_scalar('tag:yaml.org,2002:str', data, style='|')
+        return dumper.represent_scalar('tag:yaml.org,2002:str', data)
+    def sequence_presenter(dumper, data):
+        return dumper.represent_sequence('tag:yaml.org,2002:seq', data, flow_style=True)
 
-    file_path = 'interview_preparation_guide.yaml'
-    with open(file_path, 'w') as file:
-        file.write(completion.choices[0].message.content.strip())
+    yaml.add_representer(str, str_presenter, Dumper=yaml.SafeDumper)
+    yaml.add_representer(list, sequence_presenter, Dumper=yaml.SafeDumper)
+
+    # Write the data to a YAML file
+    with open(f"{company}.yaml", "w") as file:
+        yaml.dump(data, file, default_flow_style=False, sort_keys=False, Dumper=yaml.SafeDumper, width=4096)
 
 main()
-

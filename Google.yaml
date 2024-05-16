@@ -1,0 +1,20 @@
+title: Google Interview Patterns
+questions: [359, 2700, 1110, 715, 2402, 1825, 939, 1101, 975, 1307, 2863, 2013, 85, 900, 2973, 1136, 2667, 365, 2458, 2316, 2290, 963, 2265, 833, 655, 2184, 2709, 418, 1125, 2101, 315, 759, 470, 681, 690, 679, 1834, 2770, 522, 1756, 417, 1168, 1820, 2982, 1727, 2437, 1, 459, 2235, 1730, 1425, 729, 446, 564, 200, 146, 42, 685, 428, 843, 650, 362, 1146, 980, 2958, 300, 642, 424, 68, 721, 295, 316, 41, 588, 489]
+pattern:
+  pattern_chart: ''
+  difficulty_chart: ''
+  summary: |-
+    While preparing for the Google software engineering position, it's important to focus on the following patterns: Depth-First Search (DFS), Breadth-First Search (BFS), Design Patterns, and Advanced Data Structures. You should also invest your time in learning about Dynamic Programming, Mathematics-related problems, Tree problems, Heaps, and Matrix handling as they seem to be significant in the interview process. The advanced Data Structures problems can be slightly more complex due to the depth and variety of data structures that can be used. However, if you are familiar with the standard structures (Arrays, Linked Lists, Stacks, Queues, Hashes), you should be well-prepared.
+
+    The next set of patterns you should look into are Basic Programming, Binary Search, Graphs, and Union Find. The occurrence of these patterns is a clear signal that Google values the bread and butter of computer science - basic programming principles, efficient searching algorithms, graph theory, and structure mapping. Although these topics may seem direct, they can often lead to challenging problems, therefore, it is essential to apply these concepts in numerous and diverse problem-solving attempts to get a clear understanding.
+
+    To cover these concepts and patterns well, following are some problem recommendations:
+
+    - [Validate Binary Search Tree (DFS)](https://algo.monster/liteproblems/98)
+    - [Word Break II (Backtracking)](https://algo.monster/liteproblems/140)
+    - [Design Twitter (Design)](https://algo.monster/liteproblems/355)
+    - [Number of Islands (DFS/BFS)](https://algo.monster/liteproblems/200)
+    - [Coin Change (Dynamic Programming)](https://algo.monster/liteproblems/322)
+    - [Maximal Rectangle (Stack)](https://algo.monster/liteproblems/85)
+    - [Trapping Rain Water (Two Pointers)](https://algo.monster/liteproblems/42)
+    - [Union and Intersection of Two Linked Lists (Union Find)](https://algo.monster/liteproblems/160)

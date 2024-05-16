@@ -1,0 +1,18 @@
+title: Airbnb Interview Patterns
+questions: [39, 336, 787, 864, 1257, 1235]
+pattern:
+  pattern_chart: ''
+  difficulty_chart: ''
+  summary: |-
+    In the technical interviews at Airbnb, a wide range of coding challenge patterns are covered. Breath-First Search (BFS) appears to be the most frequent, followed by Depth-First Search (DFS) and Dynamic Programming. These three topics combined cover a major chunk of the interview. Other topics like Backtracking, Binary Search, Bit Manipulation, Graph, Heap, Matrix, Tree, and Trie also have a significant presence, but they are not as frequent. This diversity in topics means that candidates must be well-rounded and familiar with a variety of data structures and algorithms. It's beneficial to target the topics with higher frequency during your prep but don't neglect the others as they can surprise you in the actual interview.
+
+    The difficulty level of these problems could range from medium to hard. In terms of preparation, it would be useful to practice and be proficient in identifying common programming patterns. As you solve more problems, you will be able to recognize the use of these patterns, which will help you tackle the given problem more constructively. Not only this, but you should also be capable of articulating your thoughts and explaining your approach before implementing the solution. This will reflect your clarity of thought, which is a crucial factor in such interviews.
+
+    Here are some problems on LeetCode that you can practice:
+
+    - [Valid Parentheses (Stack)](https://algo.monster/liteproblems/0020)
+    - [Jewels and Stones (Hash Map)](https://algo.monster/liteproblems/0771)
+    - [Binary Search Tree Iterator (BST, Design)](https://algo.monster/liteproblems/0173)
+    - [Max Area of Island (DFS)](https://algo.monster/liteproblems/0695)
+    - [Knight Probability in Chessboard (Dynamic Programming)](https://algo.monster/liteproblems/0688)
+    - [Shortest Path Visiting All Nodes (BFS, Bit Manipulation)](https://algo.monster/liteproblems/0847)

@@ -1,0 +1,21 @@
+title: Facebook Interview Patterns
+questions: [314, 408, 1249, 1650, 339, 1570, 680, 227, 1762, 528, 215, 938, 346, 426, 71, 691, 236, 921, 560, 50, 162, 973, 146, 986, 1091, 827, 199, 791, 708, 129, 56, 543, 249, 398, 65, 347, 270, 138, 766, 636, 1004, 1868, 498, 721, 987, 1216, 23, 133, 88, 140]
+pattern:
+  pattern_chart: https://file.notion.so/f/f/0339b194-1d35-4555-a22b-2674acce6cc5/82a96172-9a10-47d2-a2ba-4cae1296a458/Amazon_pattern_chart.png
+  difficulty_chart: https://file.notion.so/f/f/0339b194-1d35-4555-a22b-2674acce6cc5/9889b023-170c-4cb8-8ae1-aca15c84aad3/amazon_6month_difficulty.png
+  summary: |2-
+
+    The interview process for software engineering at Facebook places considerable emphasis on a variety of problem-solving and coding patterns. In general, a significant focus is on tree-related problems, basic programming, two pointers and stack-related issues. However, binary search, linked list and math problems are also frequently encountered. This diversity reflects the need for prospective candidates to have a strong understanding of coding principles and algorithms across different areas. Here it can be inferred that the interviews might be moderately to considerably challenging.
+
+    There is a substantial need for comprehensive preparation to master the different coding patterns identified throughout the Facebook interview process. One effective method is by breaking down these patterns and devoting time to understand, practice and solve several problems linked to each of these patterns on platforms like Leetcode. Identifying recurring patterns in different problems can significantly aid in developing a strategy to quickly comprehend and solve future problems of a similar nature. The focus should be more towards mastering these patterns and problem-solving techniques, than rushing through multiple problems.
+
+    In terms of dynamic programming, divide and conquer, heap and matrix problems, while their frequency is not very high, their inherent complexity and broad scope require thorough understanding and practice. As is often noted, an interview could quickly become highly challenging when confronted with these kinds of problems, even if their occurrence is relatively infrequent. Hence, candidates should not dismiss these areas, and instead ensure their preparation is comprehensive enough to tackle any type of problem.
+
+    Here are some problems that can be practiced
+
+    - [Longest String Chain (Dynamic Programming)](https://algo.monster/liteproblems/1048)
+    - [Closest Leaves in a Binary Tree (Tree + BFS)](https://algo.monster/liteproblems/742)
+    - [Rotting Oranges (Matrix + BFS)](https://algo.monster/liteproblems/994)
+    - [Maximum Number of Coins You Can Get (Greedy)](https://algo.monster/liteproblems/1561)
+    - [Minimum Deletions to Make Character Frequencies Unique (Simulation)](https://algo.monster/liteproblems/1647)
+    - [Minimum Operations to Make a Subsequence (Greedy + Binary Search)](https://algo.monster/liteproblems/1713)

@@ -1,0 +1,17 @@
+title: Amazon Interview Patterns
+questions: [2781, 2340, 1152, 767, 2268, 2281, 2055, 2870, 472, 146, 42, 200, 950, 127, 1846, 1, 49, 140, 1531, 1063, 1814, 791, 1457, 1485, 1496, 2385, 935, 2357, 210, 2355, 11, 22, 1727, 815, 88, 812, 1529, 56, 2092, 875, 2256, 587, 1353, 399, 582, 1478, 1590, 545, 2250, 1897]
+pattern:
+  pattern_chart: ''
+  difficulty_chart: ''
+  summary: |-
+    For the software engineering position at Amazon, the interview questions mainly focus on problem solving skills with some emphasis on understanding of basic programming concepts. A considerable number of the problems that candidates may encounter involve 'Greedy' strategies and 'Dynamic Programming'. Specific data structures such as 'Trees' are also significantly represented in the questions, not forgetting typical pattern-recognition problems like 'Bit Manipulation' and 'Two Pointers'.
+
+    As such, prospective candidates should focus on these areas during their preparation. Understanding the use and implementation of common data structures is pivotal. Candidates should be comfortable and proficient in devising greedy strategies and navigating dynamic programming issues. It'll be beneficial to identify and practice these common pattern occurrences in problem-sets. LeetCode is a great platform to find problems that specifically target these patterns.
+
+    - [Minimum Number of Keypresses (Sorting + Greedy)](https://algo.monster/liteproblems/2268)
+    - [Most Stones Removed with Same Row or Column (Union Find)](https://algo.monster/liteproblems/947)
+    - [Validate Binary Search Tree (Trees)](https://algo.monster/liteproblems/98)
+    - [Longest Increasing Subsequence (Dynamic Programming)](https://algo.monster/liteproblems/300)
+    - [Unique Binary Search Trees (Dynamic Programming + Trees)](https://algo.monster/liteproblems/96)
+    - [Check Array Formation Through Concatenation (Array + Simulation)](https://algo.monster/liteproblems/1640)
+    - [Contain Virus (Graph + DFS)](https://algo.monster/liteproblems/749)
